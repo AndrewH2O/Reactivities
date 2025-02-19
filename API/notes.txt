@@ -5,3 +5,29 @@ dotnet watch
 Nullable flag in new dotnet projects, when sets to true means we get warnings
 on all ref types if they could be null then it is up to us to specify if they could be null or nullable.
 Previous behaviour was to make ref types nullable by default.
+
+Add via nuget following packages
+In persistence project: 
+    microsoft.EntityFrameworkCore.sqlite
+In API project: 
+    microsoft.EntityFrameworkCore.design
+    
+    
+EF
+globally install tools (Rider uses this so installed it) Used tooling inside Rider for this
+        dotnet tool install --global dotnet-ef --version 9.0.0
+        
+ initial migration
+    dotnet ef migrations add InitialCreate -p Persistence -s API 
+    
+    -p project where dbcontext is
+    -s where startup project is
+    
+    then to apply the migration:
+     dotnet ef database update -p Persistence -s API 
+   
+ We dropped database 
+ dotnet ef database drop -   
+    dotnet ef database drop -p Persistence -s API         
+    
+     
