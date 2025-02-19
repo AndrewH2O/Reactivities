@@ -1,0 +1,7 @@
+﻿Use
+
+dotnet watch
+
+Nullable flag in new dotnet projects, when sets to true means we get warnings
+on all ref types if they could be null then it is up to us to specify if they could be null or nullable.
+Previous behaviour was to make ref types nullable by default.
