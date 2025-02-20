@@ -31,3 +31,9 @@ globally install tools (Rider uses this so installed it) Used tooling inside Rid
     dotnet ef database drop -p Persistence -s API         
     
 URL see LaunchSettings.json     
+
+Cors
+----
+Need to indicate what sites can make calls to our API
+See changes to program.cs
+Order in which middleware runs matters

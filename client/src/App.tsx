@@ -15,7 +15,7 @@ function App() {
             <h3>Reactivities</h3>
             <ul>
                 {activities.map((activity)=>(
-                    <li key="{activity.id}">activity.title</li>
+                    <li key="{activity.id}">{activity.title}</li>
                 ))}
             </ul>
         </div>

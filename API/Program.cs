@@ -9,12 +9,15 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
+builder.Services.AddCors(); // add header to http response
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
+app.UseCors(x =>
+    x.AllowAnyHeader()
+        .AllowAnyMethod()
+        .WithOrigins("http://localhost:3000", "https://localhost:3000"));
 // routing - pass requests onto controller
 app.MapControllers();
 
@@ -26,7 +29,7 @@ var services = scope.ServiceProvider;
 try
 {
     var context = services.GetRequiredService<AppDbContext>();
-    
+
     // create db via code instead of ef tooling at cmd line
     // applies any migrations to update the db (creates db if it doesn't exist)
     await context.Database.MigrateAsync();
