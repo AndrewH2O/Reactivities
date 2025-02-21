@@ -38,3 +38,19 @@ use this site to copy json returned from a query so that we
 avoid typos https://transform.tools/json-to-typescript
 
 typescript can then infer the type elsewhere once we define type in useState
+
+Styling
+-------
+material ui design  mui.com
+see https://mui.com/material-ui/getting-started/installation/
+npm install @mui/material @emotion/react @emotion/styled
+npm install @fontsource/roboto
+
+need to import it - add to main.tsx
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+need icons
+npm install @mui/icons-material

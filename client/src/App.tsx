@@ -1,26 +1,27 @@
 import {useEffect, useState} from "react";
+import {List, ListItem, ListItemText, Typography} from "@mui/material";
 
 function App() {
     const [activities, setActivities] = useState<Activity[]>([]);
 
     // executes when component loads
-    useEffect(()=>{
+    useEffect(() => {
         fetch('https://localhost:5001/api/activities')
             .then(response => response.json())
             .then(data => setActivities(data))
-    },[])
+    }, [])
 
     return (
-        <div>
-            <h3>Reactivities</h3>
-            <ul>
-                {activities.map((activity)=>(
-                    <li key="{activity.id}">{activity.title}</li>
+        <>
+            <Typography variant='h3'>Reactivities</Typography>
+            <List>
+                {activities.map((activity) => (
+                    <ListItem key={activity.id}>
+                        <ListItemText>{activity.title}</ListItemText>
+                    </ListItem>
                 ))}
-            </ul>
-        </div>
-
-
+            </List>
+        </>
     )
 }
 
