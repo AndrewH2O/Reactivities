@@ -1,7 +1,7 @@
-import {useEffect, useLayoutEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 function App() {
-    const [activities, setActivities] = useState([]);
+    const [activities, setActivities] = useState<Activity[]>([]);
 
     // executes when component loads
     useEffect(()=>{

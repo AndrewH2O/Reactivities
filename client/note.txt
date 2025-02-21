@@ -28,3 +28,13 @@ A UseEffect is executed twice, The components mounts and calls the api and then
 tests cleanup code inside useEffect, this calls useEffect again calling
 to our api a second time. We don't have a cleanup function but the UseEffect
 is still run twice
+
+
+type definitions
+----------------
+index.d.ts        under lib/types
+
+use this site to copy json returned from a query so that we 
+avoid typos https://transform.tools/json-to-typescript
+
+typescript can then infer the type elsewhere once we define type in useState
