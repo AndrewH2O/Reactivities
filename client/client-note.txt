@@ -54,3 +54,10 @@ import '@fontsource/roboto/700.css';
 
 need icons
 npm install @mui/icons-material
+
+Add Https support
+-----------------
+>npm install -D vite vite-plugin-mkcert
+creates local certificate authority on my PC
+
+then in vite.config.ts: update import and add mkcert plugin in the config
