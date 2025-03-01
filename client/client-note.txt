@@ -61,3 +61,12 @@ Add Https support
 creates local certificate authority on my PC
 
 then in vite.config.ts: update import and add mkcert plugin in the config
+
+Axios
+-----
+https://axios-http.com/docs/intro
+Promise based library Axios used instead of fetch 
+provides more features including automatic data handling of json in the response
+Also works with typescript.
+    npm install axios
+    
