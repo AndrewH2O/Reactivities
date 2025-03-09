@@ -1,0 +1,23 @@
+﻿CQRS
+----
+CQRS Command Query Responsibility Separation
+    Flow of data
+                       Command             Query
+Does something           yes               no
+Answers Question         no                yes    
+State change             yes               no
+Return a value           no                yes
+
+In this APP we have one db
+API -> Command -> Domain -> Persistence -> DB (write ops)
+DB (read ops)  ->  Query  -> API
+Eventual Consistency   DB (write ops) -> DB (read ops)
+
+Read db could be de-normalised
+
+Mediator
+--------
+
+Added Mediatr - go-between for communication to the API
+                sending notifications/data back to the API
+Create handlers for use cases in the App layer 
