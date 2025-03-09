@@ -1,4 +1,5 @@
-﻿using Application.Activities.Queries;
+﻿using Application.Activities.Commands;
+using Application.Activities.Queries;
 using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -10,19 +11,25 @@ namespace API.Controllers;
 // api/activities
 
 // primary ctor
-public class ActivitiesController(IMediator mediator) : BaseApiController
+public class ActivitiesController() : BaseApiController
 {
     //api/Activities
     [HttpGet]
     public async Task<ActionResult<List<Activity>>> GetActivities()
     {
-        // request delegate handles this - then it will pass data back to main app thread when done
-        return await mediator.Send(new GetActivityList.Query());
+        return await Mediator.Send(new GetActivityList.Query());
     }
+    
     //api/Activities/{{id}}
     [HttpGet("{id}")]
-    public async Task<ActionResult<Activity>> getActivityDetail(string id)
+    public async Task<ActionResult<Activity>> GetActivityDetail(string id)
     {
-        return await mediator.Send(new GetActivityDetails.Query { Id = id });
+        return await Mediator.Send(new GetActivityDetails.Query { Id = id });
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<string>> CreateActivity(Activity activity)
+    {
+        return await Mediator.Send(new CreateActivity.Command { Activity = activity });
     }
 }

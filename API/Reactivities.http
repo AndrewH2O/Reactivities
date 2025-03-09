@@ -1,5 +1,6 @@
 ﻿# Reactivities
 @url = https://localhost:5001
+
 ###
 # group: Module 2
 # @name Get Weather Forecast
@@ -23,44 +24,46 @@ GET {{url}}/api/activities
 ###
 # group: Module 4
 # @name Get Activity
-GET {{url}}/api/activities/4956638d-a71d-467a-8277-75fca772958f
+GET {{url}}/api/activities/22e1d4e9-76ca-4184-9340-dbaad0d14269
 
 ###
 # group: Module 4
 # @name Create Activity
 //< {%
-    // TODO: migrate to HTTP Client Pre-request handler API
-    // var moment = require("moment");
+     //TODO: migrate to HTTP Client Pre-request handler API
+     //var moment = require("moment");
     
-    // 
+     //
     
-    // pm.environment.set('activityDate', moment().add(100, 'days').toISOString());
+     //pm.environment.set('activityDate', moment().add(100, 'days').toISOString());
 //%}
+
 POST {{url}}/api/activities
 Content-Type: application/json
 
 {
-	"title": "{{$randomCatchPhrase}}",
-	"description": "{{$randomLoremParagraph}}",
-	"category": "Culture",
-	"date": "{{activityDate}}",
-	"city": "{{$randomCity}}",
-	"venue": "{{$randomStreetName}}",
+	"title": "{{$random.company.catchPhrase}}",
+	"description": "{{$random.lorem.sentence}}",
+	"category": "music",
+	"date": "{{$isoTimestamp}}",
+	"city": "{{$random.address.cityName}}",
+	"venue": "{{$random.address.fullAddress}}",
     "latitude": 51.496510900000004,
     "longitude": -0.17600190725447445
 }
+
 
 ###
 # group: Module 4
 # @name Edit Activity
 //< {%
-    // TODO: migrate to HTTP Client Pre-request handler API
-    // var moment = require("moment");
+    //TODO: migrate to HTTP Client Pre-request handler API
+//     var moment = require("moment");
+   
+     
     
-    // 
-    
-    // pm.environment.set('activityDate', moment().add(14, 'days').toISOString());
-//%}
+//     pm.environment.set('activityDate', moment().add(14, 'days').toISOString());
+#%}
 PUT {{url}}/api/activities
 Content-Type: application/json
 
@@ -129,7 +132,7 @@ Content-Type: application/json
 	"title": "Test Create Activity updated",
 	"description": "Description of the test event",
 	"category": "Culture",
-	"date": "{{activityDate}}",
+	"date": "{{$isoTimestamp}}",
 	"city": "London",
 	"venue": "Tower of London"
 }
