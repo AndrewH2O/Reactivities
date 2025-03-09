@@ -10,7 +10,7 @@ namespace API.Controllers;
 // api/activities
 
 // primary ctor
-public class ActivitiesController(AppDbContext context, IMediator mediator) : BaseApiController
+public class ActivitiesController(IMediator mediator) : BaseApiController
 {
     //api/Activities
     [HttpGet]
@@ -23,11 +23,6 @@ public class ActivitiesController(AppDbContext context, IMediator mediator) : Ba
     [HttpGet("{id}")]
     public async Task<ActionResult<Activity>> getActivityDetail(string id)
     {
-        var activity = await context.Activities.FindAsync(id); // works only with pk
-
-        if (activity == null) 
-            return NotFound(); // 404
-        
-        return activity;
+        return await mediator.Send(new GetActivityDetails.Query { Id = id });
     }
 }
