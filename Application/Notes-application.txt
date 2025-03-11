@@ -21,3 +21,8 @@ Mediator
 Added Mediatr - go-between for communication to the API
                 sending notifications/data back to the API
 Create handlers for use cases in the App layer 
+
+AutoMapper
+----------
+Add MappingProfile in application project
+Add Service in Program.cs within API to register AutoMapper

@@ -68,11 +68,11 @@ PUT {{url}}/api/activities
 Content-Type: application/json
 
 {
-  "id": "d267552a-ad0f-45ea-add1-9b1a32df7e94",
+  "id": "d26b53f5-f66f-4f2c-bfe6-78f28eb78bb2",
   "title": "Test activity updated again",
   "date": "2025-04-03T03:10:54.11",
-  "description": "Libero sunt cumque est odit ipsa dolorem aut facilis. Est fuga aut omnis. Sunt sit quidem et omnis. Voluptatem voluptas vero updated.",
-  "category": "Culture",
+  "description": "Libero sunt cumque est ",
+  "category": "music",
   "isCancelled": false,
   "city": "Brayanbury",
   "venue": "Sylvan Fall",
