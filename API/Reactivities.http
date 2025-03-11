@@ -1,4 +1,9 @@
-﻿# Reactivities
+﻿
+###
+
+
+###
+# Reactivities
 @url = https://localhost:5001
 
 ###
@@ -59,9 +64,6 @@ Content-Type: application/json
 //< {%
     //TODO: migrate to HTTP Client Pre-request handler API
 //     var moment = require("moment");
-   
-     
-    
 //     pm.environment.set('activityDate', moment().add(14, 'days').toISOString());
 #%}
 PUT {{url}}/api/activities
@@ -86,8 +88,9 @@ Content-Type: application/json
 //< {%
     // TODO: you can add here Pre-request handler
 //%}
-DELETE {{url}}/api/activities/1aa9ae5b-a060-432c-94ad-d31a8139fb4f
+DELETE {{url}}/api/activities/e78e2005-a4f8-4700-b454-735aeebc83fe
 Content-Type: application/json
+
 
 ###
 # group: Module 10
