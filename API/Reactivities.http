@@ -17,6 +17,13 @@ GET {{url}}/weatherforecast
 GET {{url}}/api/activities
 
 ###
+# group: Module 2 with time out test use of cancellation token
+# @name Get Activities 2
+// @timeout 2500 ms
+GET {{url}}/api/activities
+
+
+###
 # group: Module 2
 # @name Get Activity
 GET {{url}}/api/activities/4956638d-a71d-467a-8277-75fca772958f
