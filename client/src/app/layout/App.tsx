@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
-import {List, ListItem, ListItemText, Typography} from "@mui/material";
+import {Box, Container, CssBaseline} from "@mui/material";
 import axios from "axios";
+import {NavBar} from "./NavBar.tsx";
+import {ActivityDashboard} from "../../features/activities/Dashboard/ActivityDashboard.tsx";
 
 function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -12,16 +14,15 @@ function App() {
   }, [])
 
   return (
-    <>
-      <Typography variant='h3'>Reactivities</Typography>
-      <List>
-        {activities.map((activity) => (
-          <ListItem key={activity.id}>
-            <ListItemText>{activity.title}</ListItemText>
-          </ListItem>
-        ))}
-      </List>
-    </>
+    <Box sx={{bgcolor: '#eeeeee'}}>
+      {/*resets browser styles so we get no margin on Navbar */}
+      <CssBaseline/>
+      <NavBar/>
+      {/*default spacing is 8 pixels the 3 means 8 * 3 pixels */}
+      <Container maxWidth="xl" sx={{mt: 3}}>
+        <ActivityDashboard activities={activities}/>
+      </Container>
+    </Box>
   )
 }
 
