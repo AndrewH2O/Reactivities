@@ -69,4 +69,9 @@ Promise based library Axios used instead of fetch
 provides more features including automatic data handling of json in the response
 Also works with typescript.
     npm install axios
-    
+
+
+Client - Crud
+-------------
+React components and client side state
+group by features
