@@ -1,21 +1,25 @@
-import { AppBar, Box, Button, Container, MenuItem, Toolbar, Typography } from "@mui/material";
-import { Group } from "@mui/icons-material";
+import {AppBar, Box, Button, Container, MenuItem, Toolbar, Typography} from "@mui/material";
+import {Group} from "@mui/icons-material";
 
-export function NavBar() {
+type Props = {
+  openForm: () => void
+}
+
+export function NavBar({openForm}:Props) {
   return (
     // box is like a div you can style
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{flexGrow: 1}}>
       <AppBar position="static"
-        sx={{ backgroundImage: 'linear-gradient(135deg, #182a73 0%, #218aae 69%, #20a7ae 89%)' }}>
+              sx={{backgroundImage: 'linear-gradient(135deg, #182a73 0%, #218aae 69%, #20a7ae 89%)'}}>
         <Container maxWidth='xl'>
-          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Toolbar sx={{display: 'flex', justifyContent: 'space-between'}}>
             <Box>
-              <MenuItem sx={{ display: 'flex', gap: 2 }}>
-                <Group fontSize="large" />
+              <MenuItem sx={{display: 'flex', gap: 2}}>
+                <Group fontSize="large"/>
                 <Typography variant="h4" fontWeight='bold'>Reactivities</Typography>
               </MenuItem>
             </Box>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{display: 'flex'}}>
               <MenuItem sx={{
                 fontSize: '1.2rem', textTransform: 'uppercase', fontWeight: 'bold'
               }}>
@@ -32,11 +36,13 @@ export function NavBar() {
                 Contact
               </MenuItem>
             </Box>
-            <Button size="large" variant="contained" color="warning">Create Activity</Button>
+            <Button size="large" variant="contained" color="warning" onClick={openForm}>
+              Create Activity
+            </Button>
           </Toolbar>
         </Container>
       </AppBar>
-    </Box >
+    </Box>
   );
 }
 

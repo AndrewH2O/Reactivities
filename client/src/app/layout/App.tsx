@@ -8,6 +8,8 @@ function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
   // view detail of an activity
   const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined)
+  // create activity state - show form or not
+  const [editMode, setEditMode] = useState(false)
 
   // executes when component loads
   useEffect(() => {
@@ -26,11 +28,22 @@ function App() {
     setSelectedActivity(undefined)
   }
 
+  // we use the activity form for both edit and creating an activity
+  const handleOpenForm = (id?: string) => {
+    if (id) handleSelectActivity(id)
+    else handleCancelSelectActivity()
+    setEditMode(true)
+  }
+
+  const handleFormClose = () => {
+    setEditMode(false)
+  }
+
   return (
     <Box sx={{bgcolor: '#eeeeee'}}>
       {/*resets browser styles so we get no margin on Navbar */}
       <CssBaseline/>
-      <NavBar/>
+      <NavBar openForm={handleOpenForm}/>
       {/*default spacing is 8 pixels the 3 means 8 * 3 pixels */}
       <Container maxWidth="xl" sx={{mt: 3}}>
         <ActivityDashboard
@@ -38,6 +51,9 @@ function App() {
           selectActivity={handleSelectActivity}
           cancelSelectActivity={handleCancelSelectActivity}
           selectedActivity={selectedActivity}
+          editMode={editMode}
+          openForm={handleOpenForm}
+          closeForm={handleFormClose}
         />
       </Container>
     </Box>

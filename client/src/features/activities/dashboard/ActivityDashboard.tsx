@@ -1,6 +1,7 @@
 import {Grid2} from "@mui/material";
 import ActivityList from "./ActivityList.tsx"
 import ActivityDetail from "../details/ActivityDetail.tsx";
+import {ActivityForm} from "../form/ActivityForm.tsx";
 
 type Props = {
   activities: Activity[]
@@ -8,6 +9,9 @@ type Props = {
   cancelSelectActivity: () => void
   // same as selectedActivity: Activity|undefined
   selectedActivity?: Activity
+  openForm: (id: string) => void
+  closeForm: () => void
+  editMode:boolean
 }
 
 // {activities etc} destructuring activities from props
@@ -16,7 +20,10 @@ export function ActivityDashboard(
     activities,
     cancelSelectActivity,
     selectActivity,
-    selectedActivity
+    selectedActivity,
+    openForm,
+    closeForm,
+    editMode
   }: Props) {
   return (
     <Grid2 container spacing={3}>
@@ -28,9 +35,13 @@ export function ActivityDashboard(
       </Grid2>
       <Grid2 size={5}>
         {
-          selectedActivity && <ActivityDetail activity={selectedActivity}
-                                              cancelSelectActivity={cancelSelectActivity}/>
+          selectedActivity && !editMode &&
+            <ActivityDetail activity={selectedActivity}
+                            cancelSelectActivity={cancelSelectActivity}
+                            openForm = {openForm}
+            />
         }
+        {editMode && <ActivityForm closeForm={closeForm} activity={selectedActivity} />}
       </Grid2>
     </Grid2>
   );
