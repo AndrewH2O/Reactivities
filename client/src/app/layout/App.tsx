@@ -6,12 +6,25 @@ import {ActivityDashboard} from "../../features/activities/dashboard/ActivityDas
 
 function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
+  // view detail of an activity
+  const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined)
 
   // executes when component loads
   useEffect(() => {
     axios.get<Activity[]>('https://localhost:5001/api/activities')
       .then(response => setActivities(response.data))
   }, [])
+
+
+  // this will be passed down to ActivityCard via ActivityDashboard
+  const handleSelectActivity = (id: string) => {
+    setSelectedActivity(activities.find(x => x.id === id))
+  }
+
+  // this will be passed down to activityDetails via ActivityDashboard
+  const handleCancelSelectActivity = () => {
+    setSelectedActivity(undefined)
+  }
 
   return (
     <Box sx={{bgcolor: '#eeeeee'}}>
@@ -20,7 +33,12 @@ function App() {
       <NavBar/>
       {/*default spacing is 8 pixels the 3 means 8 * 3 pixels */}
       <Container maxWidth="xl" sx={{mt: 3}}>
-        <ActivityDashboard activities={activities}/>
+        <ActivityDashboard
+          activities={activities}
+          selectActivity={handleSelectActivity}
+          cancelSelectActivity={handleCancelSelectActivity}
+          selectedActivity={selectedActivity}
+        />
       </Container>
     </Box>
   )
