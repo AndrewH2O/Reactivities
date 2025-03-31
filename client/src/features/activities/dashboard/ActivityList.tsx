@@ -1,5 +1,6 @@
 import {Box} from "@mui/material";
-import ActivityCard from "./ActivityCard.tsx";
+import ActivityCard from "./ActivityCard.tsx"
+
 
 type Props = {
   activities: Activity[]
